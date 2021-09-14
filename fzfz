@@ -73,7 +73,7 @@ else
 fi
 
 RECENT_DIRS="{ $SCRIPT_PATH/recentdirs.sh }"
-RECENTLY_USED_DIRS="{ $RECENT_DIRS | $REVERSER | sed 's/^[[:digit:].]*[[:space:]]*//' }"
+RECENTLY_USED_DIRS="{ $RECENT_DIRS | sed 's/^[[:digit:].]*[[:space:]]*//' }"
 
 FZF_COMMAND="${FZF_BIN_PATH} --height ${FZF_TMUX_HEIGHT:-40%} ${FZFZ_EXTRA_OPTS} --no-sort --tiebreak=end,index -m --preview='$FZFZ_PREVIEW_COMMAND | head -\$LINES'"
 

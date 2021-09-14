@@ -5,9 +5,8 @@ set -o pipefail
 
 FZFZ_RECENT_DIRS_TOOL=${FZFZ_RECENT_DIRS_TOOL:="z"}
 
-if [[ $FZFZ_RECENT_DIRS_TOOL == "z" && -n "$ZSHZ_PLUGIN_PATH" ]]; then
-    source "$ZSHZ_PLUGIN_PATH"
-    zshz -l 2>&1 && exit 0 || exit 0
+if [[ $FZFZ_RECENT_DIRS_TOOL == "z" ]]; then
+    zoxide query -s -l | awk '{print $2}'
 elif [[ $FZFZ_RECENT_DIRS_TOOL == "autojump" ]]; then
     if [[ $OSTYPE == darwin* && -z $(whence tac) ]]; then
         REVERSER='tail -r'
